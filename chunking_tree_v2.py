@@ -62,12 +62,18 @@ class TextChunker:
                 updated[i] = 0
                 continue
 
+<<<<<<< HEAD
             # Используем эмбеддинги N_back и N_forward
+=======
+>>>>>>> 90ecfd5 (initial)
             embedding_current_back = enriched_sentences[i]['combined_sentence_embedding_N_back']
             embedding_next_forward = enriched_sentences[i]['combined_sentence_embedding_N_forward']
 
             distance = 0;
+<<<<<<< HEAD
             # Вычисляем косинусное сходство между embedding_current_back и embedding_next_forward
+=======
+>>>>>>> 90ecfd5 (initial)
             distance_metric = self.COMPARE_STRATEGY
             if distance_metric == 'cosine_similarity':
                 similarity = cosine_similarity([embedding_current_back], [embedding_next_forward])[0][0]
@@ -138,8 +144,12 @@ class TextChunker:
         # Dynamic calculation of the split threshold based on aggressiveness
         distances, sentences_with_distances = self._calculate_cosine_distances(sentences)
 
+<<<<<<< HEAD
         # Используем правильную проверку для пустого массива distances
         if len(distances) == 0:  # Или distances.size == 0 для NumPy массива
+=======
+        if len(distances) == 0:
+>>>>>>> 90ecfd5 (initial)
             return {'chunk': sentences[0]['sentence'], 'subchunks': [], 'distance': sentences_with_distances[0].get('distance', None)}
 
         # The higher the aggressiveness, the lower the percentile threshold, making the split more aggressive
@@ -219,7 +229,10 @@ def _remove_embeddings_combined_sentences(structure):
         for item in structure:
             _remove_embeddings_combined_sentences(item)
 
+<<<<<<< HEAD
 # Example usage
+=======
+>>>>>>> 90ecfd5 (initial)
 with open(sys.argv[1]) as f:
     text = f.read()
     chunker = TextChunker(max_recursion_depth=9, aggressiveness=3)  # You can change the aggressiveness level and N
